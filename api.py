@@ -97,7 +97,7 @@ def predict():
 
         # 圖片處理
         img = Image.open(file).convert('RGB')
-        img = img.resize((300, 400))
+        img = img.resize((400, 300))
         img_np = np.array(img)
         print_memory_usage("圖片轉 numpy 後")
 
@@ -122,7 +122,6 @@ def predict():
         prediction = model_cls.predict(input_image_cls)[0]
         predicted_class = int(np.argmax(prediction))
 
-        predicted_class = int(np.argmax(prediction))
         return jsonify({'result': predicted_class})
 
     except Exception as e:
