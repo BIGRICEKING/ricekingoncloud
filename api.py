@@ -122,7 +122,7 @@ def predict():
         prediction = model_cls.predict(input_image_cls)[0]
         predicted_class = int(np.argmax(prediction))
 
-        return jsonify({'result': predicted_class})
+        return jsonify({'disease': predicted_class})
 
     except Exception as e:
         import traceback
