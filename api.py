@@ -97,6 +97,7 @@ def predict():
 
         # 圖片處理
         img = Image.open(file).convert('RGB')
+        img = img.resize((300, 400))
         img_np = np.array(img)
         print_memory_usage("圖片轉 numpy 後")
 
