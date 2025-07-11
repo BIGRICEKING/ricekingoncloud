@@ -61,6 +61,10 @@ print_memory_usage("載入 analysis.h5 前")
 model_cls = tf.keras.models.load_model(cls_path, custom_objects=custom_objects)
 print_memory_usage("載入 analysis.h5 後")
 
+model_seg.summary()
+model_cls.summary()
+
+
 # # 模型 warm-up（初始化做一次假推論）
 # dummy_input = np.zeros((1, 300, 400, 3), dtype=np.float32)  # 模擬一張圖片的大小
 # print("模型 warm-up 開始")
@@ -97,8 +101,7 @@ def predict():
         print_memory_usage("圖片轉 numpy 後")
 
         # ==== 預處理 ==== 
-        input_image = tf.convert_to_tensor(img_np)
-        input_image = tf.cast(input_image, tf.float32) / 255.0
+        input_image = tf.convert_to_tensor(img_np, dtype=tf.float32) / 255.0
         input_image = tf.expand_dims(input_image, axis=0)
         print_memory_usage("預處理完成")
 
