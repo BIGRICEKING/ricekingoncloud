@@ -97,6 +97,7 @@ def predict():
         print_memory_usage("圖片轉 numpy 後")
 
         # ==== 預處理 ==== 
+        input_image = tf.convert_to_tensor(img_np)
         input_image = tf.cast(input_image, tf.float32) / 255.0
         input_image = tf.expand_dims(input_image, axis=0)
         print_memory_usage("預處理完成")
