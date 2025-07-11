@@ -104,6 +104,7 @@ def predict():
         input_image = tf.convert_to_tensor(img_np, dtype=tf.float32) / 255.0
         input_image = tf.expand_dims(input_image, axis=0)
         print_memory_usage("預處理完成")
+        print(f"input_image shape: {input_image.shape}")
 
         # ==== 模型 1：分割 ==== 
         segmentation_result = model_seg.predict(input_image)[0]
